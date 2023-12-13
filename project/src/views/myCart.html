@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LaMarinaMall</title>
+
+        {styles}
+
+    </head>
+
+    <body>
+        {nav}
+
+        <h1>Listado de productos</h1>
+
+        <table>
+
+            <br><br>
+            <tr>
+                <th style="width: 150px;">{t_name}</th>
+                <th>{t_price}</th>
+            </tr>
+            {products}
+        </table>
+
+        <br>
+        <table>
+            <td style="width: 150px; font-weight: bold;">{t_total}</td>
+            <td>{total}</td>
+        </table>
+
+    </body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Product</title>
+        {styles}
+    </head>
+    <body>
+        {nav}
+        <br><br>
+        <form action="/product/db/add" method="post">
+            <h2>Añade un nuevo producto a la base de datos:</h2>
+            <br><br>
+            <label for>Name of product:</label>
+            <input type="text" name="name" id value="{product_name}">
+            <span style="color: red;">{name_error}</span>
+            <br><br>
+            <label for>Price:</label>
+            <input type="text" name="price" id value="{product_price}">
+            <span style="color: red;">{price_error}</span>
+            <br><br>
+            <label for>Description (optional):</label>
+            <br>
+            <textarea name="description" id cols="30" rows="5"></textarea>
+            <br><br>
+            <button type="submit" name>SUBMIT</button>
+        </form>
+    </body>
+</html>
