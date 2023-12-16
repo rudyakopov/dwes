@@ -1,6 +1,6 @@
-from multipart import parse_form_data
-from http.cookies import Morsel, SimpleCookie
+from http.cookies import SimpleCookie
 from urllib.parse import parse_qs
+from multipart import parse_form_data
 
 from src.models.builders import build_product
 from src.models.shopping_cart import Product, ShoppingCart, ProductForm
@@ -68,7 +68,7 @@ def shop() -> str:
             products_html += f"<td><a href='/shop/product/added?uuid={product.uuid}'>Añadir al carrito!</td></tr>"
 
     elif len(get_products()) == 0:
-        products_html = ""
+        products_html: str = ""
         context["empty_shop"] = "<h3>Actualmente no tenemos stock. Hasta pronto!<h3>"
 
         return render_template("src/views/shop.html", context)
@@ -87,12 +87,12 @@ def add_product_cart(environ: dict[str, list[str]], headers: list[tuple[str, str
     qs_uuid: str = qs_dict["uuid"][0]
 
     if get_product(qs_uuid).uuid in [product.uuid for product in cart.products]:
-        units = int(cookies[qs_uuid].value) + 1
+        units: int = int(cookies[qs_uuid].value) + 1
         new_cookie: tuple = ("Set-Cookie",
                              f"{get_product(qs_uuid).uuid}={units}"
                              )
         headers.append(new_cookie)
-        product = get_product(qs_uuid)
+        product: Product = get_product(qs_uuid)
         cart.add_product(product)
 
     else:
